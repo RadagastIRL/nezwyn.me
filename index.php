@@ -42,12 +42,12 @@ $year = date('Y');
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tinkerflare Lounge — Mind the sparks. The cider's excellent.</title>
+<title>Tinkerflare Lounge — The cider's hot, but mind the sparks!</title>
 <meta name="description" content="Tinkerflare Lounge: a working library that pours drinks, a small theater that doubles as a reading room, a tinkerer's workshop that serves dinner. Run by Nezwyn Tinkerflare.">
 <meta name="theme-color" content="#F2E9D0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1A0F2A" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Tinkerflare Lounge">
-<meta property="og:description" content="A library that serves dinner. Mind the sparks — the cider's excellent.">
+<meta property="og:description" content="A library that serves dinner. The cider's hot, but mind the sparks!">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <script>
@@ -130,7 +130,7 @@ $year = date('Y');
         <span class="wordmark__bottom">Lounge</span>
       </h1>
 
-      <p class="hero__tagline">&ldquo;Mind the sparks. The cider&rsquo;s excellent.&rdquo;</p>
+      <p class="hero__tagline">&ldquo;The cider&rsquo;s hot, but mind the sparks!&rdquo;</p>
 
       <ul class="hero__meta" aria-label="What we are">
         <li>Lounge</li><li aria-hidden="true">·</li>
@@ -302,8 +302,9 @@ $year = date('Y');
 
           <h3 class="subhead">Find us</h3>
           <p class="address">
-            14 Lampwick Lane<br>
-            (the door with the brass spark)<br>
+            16 Founder&rsquo;s Point Ln<br>
+            Stormy McStormface<br>
+            (past the crazy Haranir&rsquo;s mushroom hut)<br>
             <a href="mailto:hello@tinkerflare.lounge">hello@tinkerflare.lounge</a>
           </p>
         </div>
@@ -361,9 +362,9 @@ $year = date('Y');
     <div class="footer-seal" aria-hidden="true">
       <?php include __DIR__ . '/assets/img/seal.svg.php'; ?>
     </div>
-    <p class="footer-tag">&ldquo;Mind the sparks. The cider&rsquo;s excellent.&rdquo;</p>
+    <p class="footer-tag">&ldquo;The cider&rsquo;s hot, but mind the sparks!&rdquo;</p>
     <p class="footer-meta">
-      Tinkerflare Lounge &middot; 14 Lampwick Lane &middot;
+      Tinkerflare Lounge &middot; 16 Founder&rsquo;s Point Ln, Stormy McStormface &middot;
       <a href="mailto:hello@tinkerflare.lounge">hello@tinkerflare.lounge</a>
     </p>
     <p class="footer-fine">&copy; <?= h((string)$year) ?> Tinkerflare Lounge. A library that serves dinner.</p>
