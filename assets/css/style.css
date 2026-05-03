@@ -693,3 +693,145 @@ a:hover, a:focus-visible { color: var(--magenta); }
   body { background: white; color: black; }
   .section { page-break-inside: avoid; }
 }
+
+/* =========================================================
+   Dark mode — "Vellum mark on Arcane Violet field"
+   The brief's preferred avatar treatment, applied site-wide.
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Brand hues shifted lighter so they read on a dark ground */
+    --violet:   #B79CE6;
+    --teal:     #62C9D0;
+    --brass:    #E0BE6B;
+    --magenta:  #E573B6;
+
+    /* Grounds: deep arcane-violet rising from near-hearthwood */
+    --vellum:   #1A0F2A;
+    --vellum-2: #120821;
+    --cream:    #241645;        /* lifted panel ground */
+    --panel-deep: #20133E;       /* solid mid-tone for menu */
+
+    /* Inks become vellum on dark */
+    --hearth:   #F2E9D0;
+    --ink:      #F2E9D0;
+
+    --seal-bg:  #1A0F2A;
+
+    --shadow-soft: 0 1px 0 rgba(0,0,0,.4), 0 24px 40px -22px rgba(0,0,0,.7);
+  }
+
+  body {
+    background-image: radial-gradient(rgba(224,190,107,0.05) 1px, transparent 1.4px);
+  }
+
+  /* Header / nav */
+  .site-header {
+    background: color-mix(in oklab, var(--vellum) 88%, transparent);
+    border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
+  }
+  .topnav__brand-sub { color: var(--hearth); opacity: .8; }
+  .topnav__list a { color: var(--hearth); }
+  .topnav__list a:hover, .topnav__list a:focus-visible { color: var(--brass); }
+  .navtoggle__btn span { background: var(--hearth); }
+
+  /* Hero — brass glow on a deep arcane night */
+  .hero {
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(224,190,107,.18) 0%, transparent 60%),
+      linear-gradient(180deg, var(--vellum) 0%, var(--vellum-2) 100%);
+    border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
+  }
+  .wordmark { color: var(--violet); }
+  .wordmark__bottom { color: var(--hearth); }
+
+  /* Buttons */
+  .btn--primary {
+    background: var(--violet); color: var(--vellum);
+    border-color: var(--violet);
+  }
+  .btn--primary:hover, .btn--primary:focus-visible {
+    background: color-mix(in oklab, var(--violet) 80%, white);
+  }
+  .btn--ghost { color: var(--hearth); border-color: var(--hearth); }
+  .btn--ghost:hover, .btn--ghost:focus-visible {
+    background: var(--hearth); color: var(--vellum);
+  }
+
+  /* Sections */
+  .section--cream  { background: var(--cream); color: var(--hearth); }
+  .section--vellum { background: var(--vellum); color: var(--hearth); }
+
+  /* The "best occasion" panel: keep distinct, but solid so the menu's
+     leader-occluding trick lines up cleanly. */
+  .section--violet {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(229,115,182,.16), transparent 55%),
+      var(--panel-deep);
+    color: var(--hearth);
+  }
+  .section--violet a { color: var(--brass); }
+  .menu__list dd { background: var(--panel-deep); color: var(--brass); }
+
+  /* Programme cards — lifted violet, brass border */
+  .programme__card {
+    background: color-mix(in oklab, var(--cream) 92%, white);
+    border-color: color-mix(in oklab, var(--brass) 55%, transparent);
+  }
+  .programme__title { color: var(--violet); }
+  .programme__title em { color: var(--hearth); opacity: .85; }
+  .programme__meta { color: color-mix(in oklab, var(--hearth) 70%, transparent); }
+
+  /* Bookplate — invert to dark ground (the avatar treatment from the brief) */
+  .bookplate {
+    background: var(--cream);
+    border-color: var(--brass);
+    outline-color: var(--brass);
+  }
+  .bookplate__name { color: var(--violet); }
+  .bookplate__line { color: var(--hearth); opacity: .92; }
+
+  /* Visit / hours / form */
+  .subhead { color: var(--violet); border-bottom-color: color-mix(in oklab, var(--brass) 55%, transparent); }
+  .hours th { color: var(--teal); }
+  .hours td { color: var(--hearth); }
+  .hours th, .hours td { border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent); }
+
+  .form__row input,
+  .form__row textarea {
+    background: color-mix(in oklab, var(--cream) 88%, black);
+    color: var(--hearth);
+    border-color: color-mix(in oklab, var(--brass) 45%, transparent);
+  }
+  .form__row input::placeholder,
+  .form__row textarea::placeholder { color: color-mix(in oklab, var(--hearth) 50%, transparent); }
+  .form__row input:focus,
+  .form__row textarea:focus {
+    border-color: var(--violet);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--violet) 35%, transparent);
+  }
+
+  /* Notices */
+  .notice--ok {
+    background: color-mix(in oklab, var(--teal) 18%, var(--cream));
+    border-color: var(--teal);
+    color: var(--hearth);
+  }
+  .notice--err {
+    background: color-mix(in oklab, var(--magenta) 18%, var(--cream));
+    border-color: var(--magenta);
+    color: var(--hearth);
+  }
+
+  /* Footer — go a touch deeper than the page */
+  .site-footer {
+    background: #110720;
+    color: var(--hearth);
+  }
+  .footer-seal { color: var(--brass); --seal-bg: #110720; }
+
+  /* Lift the spark moss a touch on dark */
+  .spark { opacity: .7; }
+}
+

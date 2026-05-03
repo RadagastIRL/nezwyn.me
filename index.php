@@ -44,7 +44,8 @@ $year = date('Y');
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tinkerflare Lounge — Mind the sparks. The cider's excellent.</title>
 <meta name="description" content="Tinkerflare Lounge: a working library that pours drinks, a small theater that doubles as a reading room, a tinkerer's workshop that serves dinner. Run by Nezwyn Tinkerflare.">
-<meta name="theme-color" content="#6B4BA3">
+<meta name="theme-color" content="#F2E9D0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A0F2A" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Tinkerflare Lounge">
 <meta property="og:description" content="A library that serves dinner. Mind the sparks — the cider's excellent.">
 <meta property="og:type" content="website">
