@@ -5,3 +5,8 @@
 .idea/
 .vscode/
 .claude/settings.local.json
+
+# Kept locally, never published — design references and the deploy script
+# (the latter contains the production host path) live on disk only.
+/design/
+/deploy.sh
