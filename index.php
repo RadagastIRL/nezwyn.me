@@ -50,6 +50,22 @@ $year = date('Y');
 <meta property="og:description" content="A library that serves dinner. Mind the sparks — the cider's excellent.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<script>
+/* Resolve theme before first paint so we don't flash the wrong palette.
+   Stored preference is one of: "auto", "light", "dark" (default "auto"). */
+(function () {
+  try {
+    var allowed = { auto: 1, light: 1, dark: 1 };
+    var pref = localStorage.getItem('tf-theme');
+    if (!allowed[pref]) pref = 'auto';
+    var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+    var resolved = pref === 'auto' ? (dark ? 'dark' : 'light') : pref;
+    var html = document.documentElement;
+    html.setAttribute('data-theme', resolved);
+    html.setAttribute('data-theme-pref', pref);
+  } catch (e) { /* private mode etc. — fall through to light */ }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
@@ -69,9 +85,6 @@ $year = date('Y');
       </span>
     </a>
     <input type="checkbox" id="navtoggle" class="navtoggle" aria-hidden="true">
-    <label for="navtoggle" class="navtoggle__btn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </label>
     <ul class="topnav__list">
       <li><a href="#lounge">The Lounge</a></li>
       <li><a href="#stage">Tonight on Stage</a></li>
@@ -79,6 +92,20 @@ $year = date('Y');
       <li><a href="#library">The Library</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
+    <div class="theme-toggle">
+      <svg class="theme-toggle__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M12 3 A9 9 0 0 0 12 21 Z" fill="currentColor"/>
+      </svg>
+      <select id="theme-select" class="theme-toggle__select" aria-label="Color theme">
+        <option value="auto">Use OS</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    <label for="navtoggle" class="navtoggle__btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
   </nav>
 </header>
 
@@ -341,6 +368,36 @@ $year = date('Y');
     <p class="footer-fine">&copy; <?= h((string)$year) ?> Tinkerflare Lounge. A library that serves dinner.</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var sel = document.getElementById('theme-select');
+  if (!sel) return;
+  var html = document.documentElement;
+  sel.value = html.getAttribute('data-theme-pref') || 'auto';
+
+  function resolve(p) {
+    if (p === 'auto') {
+      return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return p;
+  }
+  function apply(p) {
+    html.setAttribute('data-theme', resolve(p));
+    html.setAttribute('data-theme-pref', p);
+    try { localStorage.setItem('tf-theme', p); } catch (e) {}
+  }
+
+  sel.addEventListener('change', function () { apply(sel.value); });
+
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    var listener = function () { if (sel.value === 'auto') apply('auto'); };
+    if (mq.addEventListener) mq.addEventListener('change', listener);
+    else if (mq.addListener) mq.addListener(listener);
+  }
+})();
+</script>
 
 </body>
 </html>

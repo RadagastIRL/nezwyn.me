@@ -120,11 +120,9 @@ a:hover, a:focus-visible { color: var(--magenta); }
 .navtoggle__btn { display: none; }
 
 @media (max-width: 760px) {
-  .topnav { flex-wrap: nowrap; }
   .navtoggle__btn {
     display: inline-flex; flex-direction: column; gap: 5px;
     width: 38px; height: 38px; align-items: center; justify-content: center;
-    margin-left: auto;
     border: 1px solid color-mix(in oklab, var(--brass) 70%, transparent);
     border-radius: var(--radius);
     cursor: pointer;
@@ -134,7 +132,11 @@ a:hover, a:focus-visible { color: var(--magenta); }
     display: block; width: 20px; height: 2px; background: var(--hearth);
     transition: transform .25s, opacity .2s;
   }
+  /* Theme toggle pushes itself + the hamburger to the right edge */
+  .theme-toggle { margin-left: auto; }
+  /* The menu list wraps to row two via order, then expands when checked */
   .topnav__list {
+    order: 99;
     flex-basis: 100%;
     flex-direction: column; gap: 0;
     margin: 0;
@@ -700,139 +702,200 @@ a:hover, a:focus-visible { color: var(--magenta); }
    The brief's preferred avatar treatment, applied site-wide.
    ========================================================= */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Brand hues shifted lighter so they read on a dark ground */
-    --violet:   #B79CE6;
-    --teal:     #62C9D0;
-    --brass:    #E0BE6B;
-    --magenta:  #E573B6;
+/* Dark mode is keyed off [data-theme="dark"] on the <html> element.
+   An inline head script resolves the user's preference (auto/light/dark)
+   plus OS state into a concrete value before first paint. */
 
-    /* Grounds: deep arcane-violet rising from near-hearthwood */
-    --vellum:   #1A0F2A;
-    --vellum-2: #120821;
-    --cream:    #241645;        /* lifted panel ground */
-    --panel-deep: #20133E;       /* solid mid-tone for menu */
+[data-theme="dark"] {
+  /* Brand hues shifted lighter so they read on a dark ground */
+  --violet:   #B79CE6;
+  --teal:     #62C9D0;
+  --brass:    #E0BE6B;
+  --magenta:  #E573B6;
 
-    /* Inks become vellum on dark */
-    --hearth:   #F2E9D0;
-    --ink:      #F2E9D0;
+  /* Grounds: deep arcane-violet rising from near-hearthwood */
+  --vellum:   #1A0F2A;
+  --vellum-2: #120821;
+  --cream:    #241645;        /* lifted panel ground */
+  --panel-deep: #20133E;       /* solid mid-tone for menu */
 
-    --seal-bg:  #1A0F2A;
+  /* Inks become vellum on dark */
+  --hearth:   #F2E9D0;
+  --ink:      #F2E9D0;
 
-    --shadow-soft: 0 1px 0 rgba(0,0,0,.4), 0 24px 40px -22px rgba(0,0,0,.7);
-  }
+  --seal-bg:  #1A0F2A;
 
-  body {
-    background-image: radial-gradient(rgba(224,190,107,0.05) 1px, transparent 1.4px);
-  }
+  --shadow-soft: 0 1px 0 rgba(0,0,0,.4), 0 24px 40px -22px rgba(0,0,0,.7);
+}
 
-  /* Header / nav */
-  .site-header {
-    background: color-mix(in oklab, var(--vellum) 88%, transparent);
-    border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
-  }
-  .topnav__brand-sub { color: var(--hearth); opacity: .8; }
-  .topnav__list a { color: var(--hearth); }
-  .topnav__list a:hover, .topnav__list a:focus-visible { color: var(--brass); }
-  .navtoggle__btn span { background: var(--hearth); }
+[data-theme="dark"] body {
+  background-image: radial-gradient(rgba(224,190,107,0.05) 1px, transparent 1.4px);
+}
 
-  /* Hero — brass glow on a deep arcane night */
-  .hero {
-    background:
-      radial-gradient(ellipse at 50% 35%, rgba(224,190,107,.18) 0%, transparent 60%),
-      linear-gradient(180deg, var(--vellum) 0%, var(--vellum-2) 100%);
-    border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
-  }
-  .wordmark { color: var(--violet); }
-  .wordmark__bottom { color: var(--hearth); }
+[data-theme="dark"] .site-header {
+  background: color-mix(in oklab, var(--vellum) 88%, transparent);
+  border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
+}
+[data-theme="dark"] .topnav__brand-sub { color: var(--hearth); opacity: .8; }
+[data-theme="dark"] .topnav__list a { color: var(--hearth); }
+[data-theme="dark"] .topnav__list a:hover,
+[data-theme="dark"] .topnav__list a:focus-visible { color: var(--brass); }
+[data-theme="dark"] .navtoggle__btn span { background: var(--hearth); }
 
-  /* Buttons */
-  .btn--primary {
-    background: var(--violet); color: var(--vellum);
-    border-color: var(--violet);
-  }
-  .btn--primary:hover, .btn--primary:focus-visible {
-    background: color-mix(in oklab, var(--violet) 80%, white);
-  }
-  .btn--ghost { color: var(--hearth); border-color: var(--hearth); }
-  .btn--ghost:hover, .btn--ghost:focus-visible {
-    background: var(--hearth); color: var(--vellum);
-  }
+[data-theme="dark"] .hero {
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(224,190,107,.18) 0%, transparent 60%),
+    linear-gradient(180deg, var(--vellum) 0%, var(--vellum-2) 100%);
+  border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
+}
+[data-theme="dark"] .wordmark { color: var(--violet); }
+[data-theme="dark"] .wordmark__bottom { color: var(--hearth); }
 
-  /* Sections */
-  .section--cream  { background: var(--cream); color: var(--hearth); }
-  .section--vellum { background: var(--vellum); color: var(--hearth); }
+[data-theme="dark"] .btn--primary {
+  background: var(--violet); color: var(--vellum);
+  border-color: var(--violet);
+}
+[data-theme="dark"] .btn--primary:hover,
+[data-theme="dark"] .btn--primary:focus-visible {
+  background: color-mix(in oklab, var(--violet) 80%, white);
+}
+[data-theme="dark"] .btn--ghost { color: var(--hearth); border-color: var(--hearth); }
+[data-theme="dark"] .btn--ghost:hover,
+[data-theme="dark"] .btn--ghost:focus-visible {
+  background: var(--hearth); color: var(--vellum);
+}
 
-  /* The "best occasion" panel: keep distinct, but solid so the menu's
-     leader-occluding trick lines up cleanly. */
-  .section--violet {
-    background:
-      radial-gradient(ellipse at 50% 0%, rgba(229,115,182,.16), transparent 55%),
-      var(--panel-deep);
-    color: var(--hearth);
-  }
-  .section--violet a { color: var(--brass); }
-  .menu__list dd { background: var(--panel-deep); color: var(--brass); }
+[data-theme="dark"] .section--cream  { background: var(--cream);  color: var(--hearth); }
+[data-theme="dark"] .section--vellum { background: var(--vellum); color: var(--hearth); }
 
-  /* Programme cards — lifted violet, brass border */
-  .programme__card {
-    background: color-mix(in oklab, var(--cream) 92%, white);
-    border-color: color-mix(in oklab, var(--brass) 55%, transparent);
-  }
-  .programme__title { color: var(--violet); }
-  .programme__title em { color: var(--hearth); opacity: .85; }
-  .programme__meta { color: color-mix(in oklab, var(--hearth) 70%, transparent); }
+[data-theme="dark"] .section--violet {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(229,115,182,.16), transparent 55%),
+    var(--panel-deep);
+  color: var(--hearth);
+}
+[data-theme="dark"] .section--violet a { color: var(--brass); }
+[data-theme="dark"] .menu__list dd { background: var(--panel-deep); color: var(--brass); }
 
-  /* Bookplate — invert to dark ground (the avatar treatment from the brief) */
-  .bookplate {
-    background: var(--cream);
-    border-color: var(--brass);
-    outline-color: var(--brass);
-  }
-  .bookplate__name { color: var(--violet); }
-  .bookplate__line { color: var(--hearth); opacity: .92; }
+[data-theme="dark"] .programme__card {
+  background: color-mix(in oklab, var(--cream) 92%, white);
+  border-color: color-mix(in oklab, var(--brass) 55%, transparent);
+}
+[data-theme="dark"] .programme__title { color: var(--violet); }
+[data-theme="dark"] .programme__title em { color: var(--hearth); opacity: .85; }
+[data-theme="dark"] .programme__meta { color: color-mix(in oklab, var(--hearth) 70%, transparent); }
 
-  /* Visit / hours / form */
-  .subhead { color: var(--violet); border-bottom-color: color-mix(in oklab, var(--brass) 55%, transparent); }
-  .hours th { color: var(--teal); }
-  .hours td { color: var(--hearth); }
-  .hours th, .hours td { border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent); }
+[data-theme="dark"] .bookplate {
+  background: var(--cream);
+  border-color: var(--brass);
+  outline-color: var(--brass);
+}
+[data-theme="dark"] .bookplate__name { color: var(--violet); }
+[data-theme="dark"] .bookplate__line { color: var(--hearth); opacity: .92; }
 
-  .form__row input,
-  .form__row textarea {
-    background: color-mix(in oklab, var(--cream) 88%, black);
-    color: var(--hearth);
-    border-color: color-mix(in oklab, var(--brass) 45%, transparent);
-  }
-  .form__row input::placeholder,
-  .form__row textarea::placeholder { color: color-mix(in oklab, var(--hearth) 50%, transparent); }
-  .form__row input:focus,
-  .form__row textarea:focus {
-    border-color: var(--violet);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--violet) 35%, transparent);
-  }
+[data-theme="dark"] .subhead {
+  color: var(--violet);
+  border-bottom-color: color-mix(in oklab, var(--brass) 55%, transparent);
+}
+[data-theme="dark"] .hours th { color: var(--teal); }
+[data-theme="dark"] .hours td { color: var(--hearth); }
+[data-theme="dark"] .hours th,
+[data-theme="dark"] .hours td { border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent); }
 
-  /* Notices */
-  .notice--ok {
-    background: color-mix(in oklab, var(--teal) 18%, var(--cream));
-    border-color: var(--teal);
-    color: var(--hearth);
-  }
-  .notice--err {
-    background: color-mix(in oklab, var(--magenta) 18%, var(--cream));
-    border-color: var(--magenta);
-    color: var(--hearth);
-  }
+[data-theme="dark"] .form__row input,
+[data-theme="dark"] .form__row textarea {
+  background: color-mix(in oklab, var(--cream) 88%, black);
+  color: var(--hearth);
+  border-color: color-mix(in oklab, var(--brass) 45%, transparent);
+}
+[data-theme="dark"] .form__row input::placeholder,
+[data-theme="dark"] .form__row textarea::placeholder {
+  color: color-mix(in oklab, var(--hearth) 50%, transparent);
+}
+[data-theme="dark"] .form__row input:focus,
+[data-theme="dark"] .form__row textarea:focus {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--violet) 35%, transparent);
+}
 
-  /* Footer — go a touch deeper than the page */
-  .site-footer {
-    background: #110720;
-    color: var(--hearth);
-  }
-  .footer-seal { color: var(--brass); --seal-bg: #110720; }
+[data-theme="dark"] .notice--ok {
+  background: color-mix(in oklab, var(--teal) 18%, var(--cream));
+  border-color: var(--teal);
+  color: var(--hearth);
+}
+[data-theme="dark"] .notice--err {
+  background: color-mix(in oklab, var(--magenta) 18%, var(--cream));
+  border-color: var(--magenta);
+  color: var(--hearth);
+}
 
-  /* Lift the spark moss a touch on dark */
-  .spark { opacity: .7; }
+[data-theme="dark"] .site-footer {
+  background: #110720;
+  color: var(--hearth);
+}
+[data-theme="dark"] .footer-seal { color: var(--brass); --seal-bg: #110720; }
+
+[data-theme="dark"] .spark { opacity: .7; }
+
+/* =========================================================
+   Theme toggle (the dropdown in the topnav)
+   ========================================================= */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .2rem .35rem .2rem .55rem;
+  border: 1px solid color-mix(in oklab, var(--brass) 65%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--brass) 8%, transparent);
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.theme-toggle__icon {
+  width: 16px; height: 16px;
+  color: var(--brass);
+  flex: 0 0 16px;
+}
+
+.theme-toggle__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  color: var(--hearth);
+  font-family: var(--font-titling);
+  font-style: italic;
+  font-size: .92rem;
+  letter-spacing: .04em;
+  border: 0;
+  padding: .25rem 1.2rem .25rem .25rem;
+  margin: 0;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--brass) 50%),
+    linear-gradient(-45deg, transparent 50%, var(--brass) 50%);
+  background-position:
+    right .55rem center,
+    right .25rem center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  line-height: 1.1;
+}
+.theme-toggle__select:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* The native dropdown menu can't be themed, but we ensure the option
+   text is legible against whatever the OS chooses to paint. */
+.theme-toggle__select option {
+  color: #1a0f2a;
+  background: #f2e9d0;
+}
+
+@media (max-width: 760px) {
+  .theme-toggle { padding: .15rem .3rem .15rem .45rem; }
+  .theme-toggle__select { font-size: .85rem; padding-right: 1rem; }
 }
 
