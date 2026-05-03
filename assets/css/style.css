@@ -837,6 +837,144 @@ a:hover, a:focus-visible { color: var(--magenta); }
 
 [data-theme="dark"] .spark { opacity: .7; }
 
+/* ---------------------------------------------------------
+   No-JS fallback: when the inline head script can't run (JS
+   disabled, blocked, or failed), <html> won't have a
+   data-theme attribute. In that case, honor the OS via a
+   media query. The :not([data-theme]) guard ensures these
+   rules cleanly defer to the explicit override otherwise.
+   --------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --violet:   #B79CE6;
+    --teal:     #62C9D0;
+    --brass:    #E0BE6B;
+    --magenta:  #E573B6;
+
+    --vellum:   #1A0F2A;
+    --vellum-2: #120821;
+    --cream:    #241645;
+    --panel-deep: #20133E;
+
+    --hearth:   #F2E9D0;
+    --ink:      #F2E9D0;
+
+    --seal-bg:  #1A0F2A;
+
+    --shadow-soft: 0 1px 0 rgba(0,0,0,.4), 0 24px 40px -22px rgba(0,0,0,.7);
+  }
+
+  :root:not([data-theme]) body {
+    background-image: radial-gradient(rgba(224,190,107,0.05) 1px, transparent 1.4px);
+  }
+
+  :root:not([data-theme]) .site-header {
+    background: color-mix(in oklab, var(--vellum) 88%, transparent);
+    border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
+  }
+  :root:not([data-theme]) .topnav__brand-sub { color: var(--hearth); opacity: .8; }
+  :root:not([data-theme]) .topnav__list a { color: var(--hearth); }
+  :root:not([data-theme]) .topnav__list a:hover,
+  :root:not([data-theme]) .topnav__list a:focus-visible { color: var(--brass); }
+  :root:not([data-theme]) .navtoggle__btn span { background: var(--hearth); }
+
+  :root:not([data-theme]) .hero {
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(224,190,107,.18) 0%, transparent 60%),
+      linear-gradient(180deg, var(--vellum) 0%, var(--vellum-2) 100%);
+    border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent);
+  }
+  :root:not([data-theme]) .wordmark { color: var(--violet); }
+  :root:not([data-theme]) .wordmark__bottom { color: var(--hearth); }
+
+  :root:not([data-theme]) .btn--primary {
+    background: var(--violet); color: var(--vellum);
+    border-color: var(--violet);
+  }
+  :root:not([data-theme]) .btn--primary:hover,
+  :root:not([data-theme]) .btn--primary:focus-visible {
+    background: color-mix(in oklab, var(--violet) 80%, white);
+  }
+  :root:not([data-theme]) .btn--ghost { color: var(--hearth); border-color: var(--hearth); }
+  :root:not([data-theme]) .btn--ghost:hover,
+  :root:not([data-theme]) .btn--ghost:focus-visible {
+    background: var(--hearth); color: var(--vellum);
+  }
+
+  :root:not([data-theme]) .section--cream  { background: var(--cream);  color: var(--hearth); }
+  :root:not([data-theme]) .section--vellum { background: var(--vellum); color: var(--hearth); }
+
+  :root:not([data-theme]) .section--violet {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(229,115,182,.16), transparent 55%),
+      var(--panel-deep);
+    color: var(--hearth);
+  }
+  :root:not([data-theme]) .section--violet a { color: var(--brass); }
+  :root:not([data-theme]) .menu__list dd { background: var(--panel-deep); color: var(--brass); }
+
+  :root:not([data-theme]) .programme__card {
+    background: color-mix(in oklab, var(--cream) 92%, white);
+    border-color: color-mix(in oklab, var(--brass) 55%, transparent);
+  }
+  :root:not([data-theme]) .programme__title { color: var(--violet); }
+  :root:not([data-theme]) .programme__title em { color: var(--hearth); opacity: .85; }
+  :root:not([data-theme]) .programme__meta { color: color-mix(in oklab, var(--hearth) 70%, transparent); }
+
+  :root:not([data-theme]) .bookplate {
+    background: var(--cream);
+    border-color: var(--brass);
+    outline-color: var(--brass);
+  }
+  :root:not([data-theme]) .bookplate__name { color: var(--violet); }
+  :root:not([data-theme]) .bookplate__line { color: var(--hearth); opacity: .92; }
+
+  :root:not([data-theme]) .subhead {
+    color: var(--violet);
+    border-bottom-color: color-mix(in oklab, var(--brass) 55%, transparent);
+  }
+  :root:not([data-theme]) .hours th { color: var(--teal); }
+  :root:not([data-theme]) .hours td { color: var(--hearth); }
+  :root:not([data-theme]) .hours th,
+  :root:not([data-theme]) .hours td { border-bottom-color: color-mix(in oklab, var(--brass) 35%, transparent); }
+
+  :root:not([data-theme]) .form__row input,
+  :root:not([data-theme]) .form__row textarea {
+    background: color-mix(in oklab, var(--cream) 88%, black);
+    color: var(--hearth);
+    border-color: color-mix(in oklab, var(--brass) 45%, transparent);
+  }
+  :root:not([data-theme]) .form__row input::placeholder,
+  :root:not([data-theme]) .form__row textarea::placeholder {
+    color: color-mix(in oklab, var(--hearth) 50%, transparent);
+  }
+  :root:not([data-theme]) .form__row input:focus,
+  :root:not([data-theme]) .form__row textarea:focus {
+    border-color: var(--violet);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--violet) 35%, transparent);
+  }
+
+  :root:not([data-theme]) .notice--ok {
+    background: color-mix(in oklab, var(--teal) 18%, var(--cream));
+    border-color: var(--teal);
+    color: var(--hearth);
+  }
+  :root:not([data-theme]) .notice--err {
+    background: color-mix(in oklab, var(--magenta) 18%, var(--cream));
+    border-color: var(--magenta);
+    color: var(--hearth);
+  }
+
+  :root:not([data-theme]) .site-footer {
+    background: #110720;
+    color: var(--hearth);
+  }
+  :root:not([data-theme]) .footer-seal { color: var(--brass); --seal-bg: #110720; }
+
+  :root:not([data-theme]) .spark { opacity: .7; }
+}
+
 /* =========================================================
    Theme toggle (the dropdown in the topnav)
    ========================================================= */

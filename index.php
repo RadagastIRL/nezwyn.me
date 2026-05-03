@@ -70,6 +70,7 @@ $year = date('Y');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.theme-toggle{display:none!important}</style></noscript>
 </head>
 <body>
 
