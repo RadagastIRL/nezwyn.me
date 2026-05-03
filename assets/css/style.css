@@ -11,6 +11,7 @@
   --hearth:   #3A241A;   /* Hearthwood        — body text */
   --vellum:   #F2E9D0;   /* Vellum            — page ground */
   --vellum-2: #EADFC0;   /* slightly deeper vellum */
+  --parchment:#F2E9D0;   /* stable parchment for "light text on violet" — does not flip in dark mode */
   --cream:    #FBF5E2;   /* light cream */
   --ink:      #2A1A12;   /* deep ink for body on cream */
 
@@ -335,7 +336,7 @@ a:hover, a:focus-visible { color: var(--magenta); }
   margin: 0 0 1.4rem;
 }
 .display--center { text-align: center; }
-.display--light { color: var(--vellum); }
+.display--light { color: var(--parchment); }
 
 .lede {
   font-size: 1.18rem;
@@ -344,7 +345,7 @@ a:hover, a:focus-visible { color: var(--magenta); }
   color: color-mix(in oklab, var(--hearth) 92%, transparent);
   margin: 0 0 1.5rem;
 }
-.lede--light { color: color-mix(in oklab, var(--vellum) 92%, transparent); }
+.lede--light { color: color-mix(in oklab, var(--parchment) 92%, transparent); }
 
 .signature {
   font-family: var(--font-hand);
@@ -448,7 +449,7 @@ a:hover, a:focus-visible { color: var(--magenta); }
   font-family: var(--font-titling);
   font-size: 1.08rem;
   font-style: italic;
-  color: var(--vellum);
+  color: var(--parchment);
   position: relative;
   overflow: hidden;
 }
@@ -477,7 +478,7 @@ a:hover, a:focus-visible { color: var(--magenta); }
   max-width: 42rem;
   color: color-mix(in oklab, var(--hearth) 70%, transparent);
 }
-.footnote--light { color: color-mix(in oklab, var(--vellum) 80%, transparent); }
+.footnote--light { color: color-mix(in oklab, var(--parchment) 80%, transparent); }
 
 /* =================== Library / split layout =================== */
 
