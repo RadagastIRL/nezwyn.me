@@ -89,6 +89,7 @@ $year = date('Y');
     <ul class="topnav__list">
       <li><a href="#lounge">The Lounge</a></li>
       <li><a href="#stage">Tonight on Stage</a></li>
+      <li><a href="#arcade">The Arcade</a></li>
       <li><a href="#kitchen">Kitchen &amp; Cellar</a></li>
       <li><a href="#library">The Library</a></li>
       <li><a href="#visit">Visit</a></li>
@@ -203,6 +204,82 @@ $year = date('Y');
           <h3 class="programme__title">Children&rsquo;s Story Hour</h3>
           <p>One story, one biscuit, one well-behaved illusion. Parents welcome to read along (or nap).</p>
           <p class="programme__meta">Free &middot; library card encouraged</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="arcade" class="section section--cream">
+    <div class="container">
+      <p class="kicker"><span class="rule rule--brass"></span>Upstairs from the Stage<span class="rule rule--brass"></span></p>
+      <h2 class="display display--center">The Arcade</h2>
+      <p class="lede center arcade__lede">
+        A staircase behind the small stage opens onto the long room above &mdash;
+        stamped tin ceiling, three good lamps, a standing offer of one free
+        round to anyone who beats Nezwyn at skee-ball. We have not yet had
+        to honor it.
+      </p>
+
+      <div class="arcade">
+        <article class="arcade__card">
+          <div class="arcade__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="22" cy="34" r="14"/>
+              <circle cx="22" cy="34" r="7"/>
+              <circle cx="22" cy="34" r="1.6" fill="currentColor" stroke="none"/>
+              <line x1="38" y1="46" x2="55" y2="22"/>
+              <path d="M48 12 L60 16 L56 26 Z" fill="currentColor" stroke-linejoin="miter"/>
+            </svg>
+          </div>
+          <h3 class="arcade__title">Axe Throwing</h3>
+          <p>Two lanes, four hatchets, one very patient marshal. Targets are repainted weekly &mdash; sometimes twice.</p>
+          <p class="arcade__meta">8 / half hour &middot; closed-toe boots, please</p>
+        </article>
+
+        <article class="arcade__card">
+          <div class="arcade__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <circle cx="32" cy="34" r="20" fill="currentColor"/>
+              <circle cx="32" cy="28" r="8" fill="var(--card-bg, #FBF5E2)"/>
+              <text x="32" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="700" fill="currentColor">8</text>
+              <line x1="6" y1="48" x2="22" y2="42" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="arcade__title">Billiards</h3>
+          <p>One slate table under the south window, chalked nightly. House cues are the good ones; the warped one is for grudges.</p>
+          <p class="arcade__meta">5 / hour &middot; first round goes to the loser</p>
+        </article>
+
+        <article class="arcade__card">
+          <div class="arcade__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+              <rect x="10" y="14" width="44" height="36" rx="3"/>
+              <line x1="32" y1="14" x2="32" y2="50"/>
+              <circle cx="32" cy="32" r="6" fill="currentColor"/>
+              <line x1="22" y1="14" x2="42" y2="14" stroke-width="5" opacity="0.4"/>
+              <line x1="22" y1="50" x2="42" y2="50" stroke-width="5" opacity="0.4"/>
+            </svg>
+          </div>
+          <h3 class="arcade__title">Air Hockey</h3>
+          <p>Best two of three, and a strict no-leaning rule. The fan hums in B-flat, which the trio downstairs has occasionally accompanied.</p>
+          <p class="arcade__meta">3 / game &middot; tournaments first Friday</p>
+        </article>
+
+        <article class="arcade__card">
+          <div class="arcade__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="52" x2="40" y2="20"/>
+              <line x1="14" y1="56" x2="46" y2="24"/>
+              <line x1="8" y1="52" x2="14" y2="56"/>
+              <line x1="40" y1="20" x2="46" y2="24"/>
+              <circle cx="14" cy="48" r="4.5" fill="currentColor"/>
+              <circle cx="49" cy="20" r="9"/>
+              <circle cx="49" cy="20" r="4.5"/>
+            </svg>
+          </div>
+          <h3 class="arcade__title">Skee-Ball</h3>
+          <p>Three lanes of varnished maple. High score gets their name on the board; current leader is &ldquo;Nezwyn (don&rsquo;t ask).&rdquo;</p>
+          <p class="arcade__meta">2 / round of nine &middot; tickets redeemable at the bar</p>
         </article>
       </div>
     </div>

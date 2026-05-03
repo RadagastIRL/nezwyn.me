@@ -410,6 +410,66 @@ a:hover, a:focus-visible { color: var(--magenta); }
   color: color-mix(in oklab, var(--hearth) 70%, transparent);
 }
 
+/* =================== Arcade =================== */
+
+.arcade__lede { margin: 0 auto 2.5rem; max-width: 50rem; }
+
+.arcade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+}
+
+.arcade__card {
+  background: var(--vellum);
+  border: 1px solid color-mix(in oklab, var(--brass) 60%, transparent);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.4rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform .2s, box-shadow .2s;
+  position: relative;
+  /* Used by inline SVGs to "punch through" the ball graphic */
+  --card-bg: var(--vellum);
+}
+.arcade__card::before, .arcade__card::after {
+  content: ""; position: absolute; left: 1rem; right: 1rem;
+  height: 1px; background: var(--brass); opacity: .55;
+}
+.arcade__card::before { top: .5rem; }
+.arcade__card::after  { bottom: .5rem; }
+.arcade__card:hover { transform: translateY(-3px); box-shadow: 0 1px 0 rgba(58,36,26,.18), 0 24px 40px -22px rgba(58,36,26,.45); }
+
+.arcade__icon {
+  width: 56px; height: 56px;
+  margin: 0 auto .9rem;
+  color: var(--violet);
+}
+.arcade__icon svg { width: 100%; height: 100%; display: block; }
+
+.arcade__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--violet);
+  margin: 0 0 .55rem;
+  letter-spacing: .02em;
+  line-height: 1.15;
+}
+
+.arcade__card p {
+  margin: 0 0 .5rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.arcade__meta {
+  font-family: var(--font-titling);
+  font-style: italic;
+  font-size: .92rem;
+  color: var(--teal);
+  margin-top: .9rem !important;
+}
+
 /* =================== Menu =================== */
 
 .menu {
@@ -785,6 +845,15 @@ a:hover, a:focus-visible { color: var(--magenta); }
 [data-theme="dark"] .programme__title em { color: var(--hearth); opacity: .85; }
 [data-theme="dark"] .programme__meta { color: color-mix(in oklab, var(--hearth) 70%, transparent); }
 
+[data-theme="dark"] .arcade__card {
+  background: color-mix(in oklab, var(--cream) 92%, white);
+  border-color: color-mix(in oklab, var(--brass) 55%, transparent);
+  --card-bg: color-mix(in oklab, var(--cream) 92%, white);
+}
+[data-theme="dark"] .arcade__title { color: var(--violet); }
+[data-theme="dark"] .arcade__icon { color: var(--violet); }
+[data-theme="dark"] .arcade__meta { color: var(--teal); }
+
 [data-theme="dark"] .bookplate {
   background: var(--cream);
   border-color: var(--brass);
@@ -921,6 +990,15 @@ a:hover, a:focus-visible { color: var(--magenta); }
   :root:not([data-theme]) .programme__title { color: var(--violet); }
   :root:not([data-theme]) .programme__title em { color: var(--hearth); opacity: .85; }
   :root:not([data-theme]) .programme__meta { color: color-mix(in oklab, var(--hearth) 70%, transparent); }
+
+  :root:not([data-theme]) .arcade__card {
+    background: color-mix(in oklab, var(--cream) 92%, white);
+    border-color: color-mix(in oklab, var(--brass) 55%, transparent);
+    --card-bg: color-mix(in oklab, var(--cream) 92%, white);
+  }
+  :root:not([data-theme]) .arcade__title { color: var(--violet); }
+  :root:not([data-theme]) .arcade__icon { color: var(--violet); }
+  :root:not([data-theme]) .arcade__meta { color: var(--teal); }
 
   :root:not([data-theme]) .bookplate {
     background: var(--cream);
